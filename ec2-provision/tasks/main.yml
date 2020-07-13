@@ -1,0 +1,3 @@
+---
+# tasks file for ec2-provision
+- include_tasks: launch-ec2.yml

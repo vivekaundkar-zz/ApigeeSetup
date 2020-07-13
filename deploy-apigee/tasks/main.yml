@@ -1,0 +1,3 @@
+---
+# tasks file for deploy-apigee
+- include_tasks: bootstrap.yml

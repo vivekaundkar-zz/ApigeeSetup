@@ -1,0 +1,17 @@
+---
+  - name: Provision Apigee AIO
+    hosts: localhost
+    gather_facts: false
+    roles:
+     - { role: ec2-provision }
+  
+  - name: Provision Apigee AIO
+    hosts: Dev_Apigee
+    gather_facts: false
+    vars:
+      ansible_ssh_common_args: '-o StrictHostKeyChecking=no -i {{ Ansible_ssh_key }}'
+    remote_user: centos
+    become: true
+    become_method: sudo
+    roles:
+     - { role: deploy-apigee }   

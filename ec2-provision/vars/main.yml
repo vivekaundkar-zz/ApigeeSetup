@@ -1,0 +1,9 @@
+---
+# vars file for ec2-provision
+Key_name: "ATO-Ansible-Controller"
+Instance_type: t2.micro
+Region: "ap-southeast-2"
+Image: ami-0b2045146eb00b617
+Group: OPDK
+Instance_Name: DSG_AnsibleAutomated1
+Ansible_ssh_key: "/Users/vivekaundkar/vivek/ATO-Ansible-Controller.pem"

@@ -1,0 +1,48 @@
+#Installing bootstrap
+
+- name: disable SELinux
+  command: setenforce 0
+  become: yes
+  become_user: root
+- name: Install wget
+  yum:
+    name: wget
+    state: latest 
+- name: Install epel-release-latest-7.noarch.rpm
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+- name: Install libdb4
+  yum:
+    name: libdb4
+    state: latest 
+- name: Install yum-utils
+  yum:
+    name: yum-utils
+    state: latest
+- name: Install yum-plugin-priorities
+  yum:
+    name: yum-plugin-priorities
+    state: latest
+#- name: Install rh-amazon-rhui-client.noarch
+#  yum:
+#    name: rh-amazon-rhui-client.noarch
+#    state: update
+- name: if you are installing on AWS, run the following yum-configure-manager commands
+  command: yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+  become: yes
+  become_user: root
+- name: Download the Edge bootstrap
+  get_url:
+    url: https://software.apigee.com/bootstrap_4.50.00.sh
+    dest: /tmp/bootstrap_4.50.00.sh
+    mode: '744'
+- name: Install the Edge apigee-service utility and dependencies
+  command: bash /tmp/bootstrap_4.50.00.sh apigeeuser={{ APIGEEUSER }} apigeepassword={{ APIGEEPWD }} JAVA_FIX=I
+  become: yes
+  become_user: root
+- name: Use apigee-service to install the apigee-setup utility
+  command: /opt/apigee/apigee-service/bin/apigee-service apigee-setup install
+  become: yes
+  become_user: root
+
