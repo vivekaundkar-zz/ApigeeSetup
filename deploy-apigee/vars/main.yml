@@ -1,5 +1,5 @@
 ---
 # vars file for deploy-apigee
 Ansible_ssh_key: "/home/centos/.ssh/ATO-Ansible-Controller.pem"
-APIGEEUSER: "teremeval"
-APIGEEPWD: "0TBsEFag-zkfWC5M"
+APIGEEUSER: <APIGEEUSER>
+APIGEEPWD: <APIGEEPWD>

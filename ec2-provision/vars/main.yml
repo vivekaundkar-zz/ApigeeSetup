@@ -6,4 +6,3 @@ Region: "ap-southeast-2"
 Image: ami-0b2045146eb00b617
 Group: OPDK
 Instance_Name: DSG_AnsibleAutomated1
-Ansible_ssh_key: "/Users/vivekaundkar/vivek/ATO-Ansible-Controller.pem"
